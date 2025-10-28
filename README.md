@@ -1,7 +1,7 @@
 ﻿# citi-technology-software-development-forage
 
-<img width="1554" height="466" alt="image" src="https://github.com/user-attachments/assets/3cb60a11-45fe-4d0b-aa21-6baab39b2aa9" />
-<img width="1200" height="708" alt="image" src="https://github.com/user-attachments/assets/de7bedf6-1271-4b17-a0ba-994619577093" />
+<img width="1000" height="400" alt="image" src="https://github.com/user-attachments/assets/3cb60a11-45fe-4d0b-aa21-6baab39b2aa9" />
+<img width="1000" height="700" alt="image" src="https://github.com/user-attachments/assets/de7bedf6-1271-4b17-a0ba-994619577093" />
 
 This repository showcases my work from the **Citi Technology Software Development Virtual Experience** completed on [Forage]  
 The program involved real-world inspired tasks focused on improving Citi’s loan management system and stock market risk reporting through software engineering and data visualization.
@@ -75,6 +75,7 @@ Throughout the simulation, I worked on a series of software development tasks de
 - **Expiration:** None  
 
 ---
+
 
 
 
