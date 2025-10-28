@@ -1,0 +1,72 @@
+Task 2: Write a feature proposal
+
+Here is your task
+In this task, you’ll write a brief proposal for a credit risk modeling system for use in Citi’s loan management system. Here are your instructions:
+
+Credit Risk Modelling Proposal
+
+Overview
+
+A machine learning–based credit risk modeling system can greatly enhance Citi’s loan management process by automating risk assessment, improving accuracy in loan decisions, and reducing default rates. By leveraging advanced analytics and historical loan data, the model can assign a credit risk score or probability of default (PD) to each applicant, helping loan officers make faster and more data-driven decisions while maintaining compliance with financial regulations.
+
+Data Requirements
+
+To predict credit risk accurately, the system will require structured data from multiple sources, including applicant information, financial behavior, and macroeconomic indicators. Key input variables include:
+
+Applicant Demographics: Age, employment type, occupation, education level, location.
+Financial Data: Income, savings, monthly expenses, existing loan amounts, outstanding debts, credit card utilization ratio.
+Credit Bureau Data: Credit score (e.g., CIBIL), credit history length, number of credit inquiries, payment delinquencies, default history.
+Loan-Specific Data: Loan amount, tenure, interest rate, loan type (personal, auto, mortgage, business).
+Behavioral Data (optional): Transaction history, account balances, cash flow patterns.
+Macroeconomic Data: Inflation rate, unemployment rate, GDP growth, regional economic indicators.
+Data preprocessing will include cleaning, feature engineering (e.g., debt-to-income ratio, credit utilization rate), normalization, and handling missing values to ensure high-quality inputs for the model.
+
+Data Outputs
+
+The system will output actionable credit risk indicators for loan officers and automated loan decision modules:
+
+Credit Risk Score (0–1 or 0–100): Indicates the probability of default (PD).
+Risk Category: Low, Medium, or High risk based on defined thresholds.
+Confidence Level: How certain the model is about its prediction.
+Recommended Action: Approve, Review Manually, or Reject.
+Feature Importance Report: Explains which variables influenced the risk score the most (for transparency and compliance).
+
+These outputs will integrate into Citi’s loan management dashboard, allowing officers to view risk summaries per applicant and portfolio-level risk trends.
+
+Architecture
+
+A combination of traditional statistical models and modern machine learning algorithms can be explored for optimal accuracy and interpretability:
+
+1.Baseline Models:
+
+Logistic Regression (interpretable, regulatory-friendly)
+Decision Trees (simple to visualize)
+
+2. advanced Models:
+
+Random Forest, XGBoost, or LightGBM (high predictive power)
+Neural Networks (for large-scale or unstructured data integration)
+Ensemble Models (combining multiple algorithms to balance bias and variance)           
+
+3. Model Pipeline:
+
+Data ingestion and pre-processing
+Feature engineering (ratios, historical trends)
+Model training with cross-validation
+Model evaluation using metrics such as AUC-ROC, F1-score, and KS-statistic
+Model deployment via API into Citi’s loan management platform
+
+The recommended architecture is a Gradient Boosting Model (XGBoost) for its strong performance, ability to handle non-linear relationships, and feature importance interpretability.
+
+Risks and Challenges
+
+Data Quality and Availability: Missing or inconsistent applicant data can bias predictions.
+Model Bias: Historical bias in lending data may cause discrimination against certain groups; fairness monitoring is required.
+Regulatory Compliance: Model transparency and explain ability must meet banking and AI ethics standards.
+Overfitting: The model must generalize well to new applicants; regular retraining and validation are needed.
+Cybersecurity and Privacy: Sensitive financial data must be protected under data protection laws (e.g., GDPR).
+Change Management: Integrating AI-driven decisions with human loan officers’ workflows requires training and trust building.
+
+Conclusion
+
+By implementing this credit risk modelling system, Citi can improve loan approval accuracy, minimize defaults, and enhance operational efficiency. With continuous retraining and ethical oversight, the model will evolve to align with regulatory requirements and customer needs, providing a robust foundation for risk-based lending decisions.
