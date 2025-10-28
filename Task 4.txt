@@ -3,6 +3,9 @@ Task 4: Visualize live data
 Here is your task
 In this task, you'll update your existing application so that it displays a line graph that contains recorded stock prices every time Yahoo Finance is queried. Here are your instructions:
 
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
 package citi;
 
 import java.io.IOException;
@@ -110,3 +113,4 @@ public class App extends Application {
         launch(args);
     }
 }
+
