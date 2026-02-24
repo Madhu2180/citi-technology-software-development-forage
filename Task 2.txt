@@ -1,10 +1,18 @@
-Task 2: Write a feature proposal
+ Task 2: Write a feature proposal
 
 Here is your task
 In this task, you’ll write a brief proposal for a credit risk modeling system for use in Citi’s loan management system. Here are your instructions:
 
-Credit Risk Modelling Proposal : 
--------------------------------
+1. Before you begin, review the resources provided below to learn about how existing credit risk modeling systems work.
+2. Determine the data your model will need. What input variables will be used to predict credit risk?
+3. Determine what the model will output. What will the output variables look like?
+4. Explore possible model types and architectures that can be used for this system.
+5. Consider the risks or challenges of creating a credit risk modeling system.
+6. When you've collected all your ideas, write up a brief proposal for this potential feature! We've included a "Proposal Template" in the Resources section below to get you started, but you may write it in any way you think is appropriate.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                  Answer : Credit Risk Modeling Proposal
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Overview :
 
@@ -70,4 +78,6 @@ Change Management: Integrating AI-driven decisions with human loan officers’ w
 
 Conclusion :
 
-By implementing this credit risk modelling system, Citi can improve loan approval accuracy, minimize defaults, and enhance operational efficiency. With continuous retraining and ethical oversight, the model will evolve to align with regulatory requirements and customer needs, providing a robust foundation for risk-based lending decisions.
+By implementing this credit risk modelling system, Citi can improve loan approval accuracy, minimize defaults, and enhance operational efficiency. With continuous retraining and ethical oversight, the model will evolve to align with regulatory requirements and customer needs, providing a robust foundation for risk-based lending decisions.                                         
+
+
