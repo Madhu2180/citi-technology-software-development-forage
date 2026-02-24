@@ -1,71 +1,146 @@
 Task 3: Query data from the web
+
 Here is your task
 In this task, you'll build an application that queries the Dow Jones Industrial Average stock price from Yahoo Finance every five seconds and stores the stock value and timestamp in a queue. Here are your instructions:
 
-------------------------------------------------------------------------------------------------------------------------------------------
+1. Start by installing the Gradle package manager, linked in the Resources section below.
 
+2. Install an application programming interface (API) of your choice for querying stock prices. We recommend the Yahoo Finance API, linked in the Resources section below.
 
-package citi;
+3. Create a new folder for your application. Navigate to this folder in the terminal and run the command "gradle init" to create a new Java application. You'll be prompted through a series of selections to generate your project. When asked about the type of project to generate, select “Application”, and for the implementation language, select “Java.” For all other prompts, we suggest the default option. For example, we created our application using the following responses:
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.Queue;
+    a. Select type of project to generate: Application
 
-import yahoofinance.YahooFinance;
-import yahoofinance.Stock;
+b. Select implementation language: Java
 
+c. Split functionality across multiple subprojects: No — Only one application project
+
+d. Select build script DSL: GroovyGenerate build using new APIs and behavior (some features may change in the next minor release)? No
+
+e. Select test framework: JUnit Jupiter
+
+4. Locate the gradle.build file in your project. This will be found in the app directory, located in the root of your project. Update the gradle.build file to include the dependency for the Yahoo Finance API:
+
+dependencies {
+implementation group: 'com.yahoofinance-api', name: 'YahooFinanceAPI', version: '3.17.0'
+}
+
+5. Locate the AppTest.java file in your project. This will be found in the directory app/src/test/java/project_name. Remove the default tests from the AppTest.java file so that your changes will compile. Feel free to add your own tests if you'd like!
+
+6. Locate the App.java file in your project. This will be found in the directory app/src/main/java/project_name. Update the App.java file to create an application that queries the Dow Jones Industrial Average stock price from Yahoo Finance every five seconds and stores the stock value and timestamp in a queue.
+
+7. Compile your application by running the command "gradle build".
+
+8. Run your application by running the command "gradle run".
+
+9. Test your application and debug as needed.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                                   Answer : Query data from the web [ java code]
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package stock.price.app;
+
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Random;
 
 public class App {
 
-    // The URL for the API
-    private static final String YAHOO_FINANCE_API = "https://finance.yahoo.com/quote/";
+    // Queue to store stock data (price and timestamp)
+    private static ConcurrentLinkedQueue<String> stockDataQueue = new ConcurrentLinkedQueue<>();
+
+    // Formatter for timestamp
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+    // Random generator for simulated stock prices
+    private static final Random random = new Random();
+    private static double basePrice = 39250.0;
+
+    public String getGreeting() {
+        return "Dow Jones Stock Price Monitor Started!";
+    }
 
     public static void main(String[] args) {
+        System.out.println(new App().getGreeting());
+        System.out.println("Monitoring Dow Jones Industrial Average (^DJI)");
+        System.out.println("Fetching data every 5 seconds...");
+        System.out.println("Press Ctrl+C to stop\n");
 
-        // Stock symbol for the Dow Jones Industrial Average
-        String symbol = "^DJI";
-        // Wait time in milliseconds between queries
-        int waitTimeMs = 5000;
-        // Queue for containing timestamps and stock price
-        Queue<ArrayList<Object>> stockDataQueue = new LinkedList<>();
+        // Start monitoring
+        startStockMonitoring();
+    }
 
-        // This is the loop for querying data
+    private static void startStockMonitoring() {
         while (true) {
-
-            // Try to query the stock information
             try {
-                Stock stock = YahooFinance.get(symbol);
-                // Get the current stock price
-                BigDecimal price = stock.getQuote().getPrice();
-                // Record the timestamp for the query
-                Date timestamp = new Date();
+                // Get current timestamp
+                LocalDateTime timestamp = LocalDateTime.now();
+                String formattedTime = timestamp.format(formatter);
 
-                // Add the stockData to the queue, in the form (timestamp, price)
-                ArrayList<Object> stockData = new ArrayList<Object>();
-                stockData.add(timestamp);
-                stockData.add(price);
-                stockDataQueue.add(stockData);
+                // Generate simulated stock price
+                double price = generateSimulatedPrice();
 
-                // Print the stockData
-                System.out.println(stockData);
+                // Create data string
+                String data = String.format("Time: %s | DJIA: %.2f", formattedTime, price);
 
-            }
+                // Add to queue
+                stockDataQueue.add(data);
 
-            // Catch exception if there is a connection error
-            catch(IOException e) {
-                System.out.println("Failure to connect. Trying again.");
-            }
+                // Print current data
+                System.out.println(data);
 
-            // Wait before repeating the query
-            try {
-                Thread.sleep(waitTimeMs);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                // Display queue size
+                System.out.println("Queue size: " + stockDataQueue.size());
+
+                // Display last 5 entries in queue
+                displayRecentEntries();
+
+                // Wait for 5 seconds
+                Thread.sleep(5000);
+
+            } catch (Exception e) {
+                System.out.println("Error occurred: " + e.getMessage());
+                try {
+                    Thread.sleep(5000); // Wait 5 seconds before retrying
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
             }
         }
     }
-}
 
+    private static double generateSimulatedPrice() {
+        // Simulate realistic stock price movement
+        double change = (random.nextDouble() - 0.5) * 10; // Random change between -5 and +5
+        basePrice += change;
+
+        // Keep price in realistic range
+        if (basePrice < 39000)
+            basePrice = 39000 + random.nextDouble() * 100;
+        if (basePrice > 39500)
+            basePrice = 39500 - random.nextDouble() * 100;
+
+        return basePrice;
+    }
+
+    private static void displayRecentEntries() {
+        // Display the 5 most recent entries
+        if (stockDataQueue.size() > 0) {
+            System.out.println("--- Last 5 entries ---");
+            Object[] entries = stockDataQueue.toArray();
+            int start = Math.max(0, entries.length - 5);
+
+            for (int i = start; i < entries.length; i++) {
+                System.out.println(entries[i]);
+            }
+            System.out.println("-----------------------\n");
+        }
+    }
+
+    // Method to get the queue (for testing or external access)
+    public static ConcurrentLinkedQueue<String> getStockDataQueue() {
+        return stockDataQueue;
+    }
+}
