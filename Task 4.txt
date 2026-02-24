@@ -3,8 +3,21 @@ Task 4: Visualize live data
 Here is your task
 In this task, you'll update your existing application so that it displays a line graph that contains recorded stock prices every time Yahoo Finance is queried. Here are your instructions:
 
------------------------------------------------------------------------------------------------------------------------------------------
+1. Ensure that you've completed all the steps included in Task 3. This includes installing the Gradle package and the Yahoo Finance API, as well as building an application that queries the Dow Jones Industrial Average stock price from Yahoo Finance every five seconds and then stores the data in a queue.
 
+2. Update the gradle.build file in your package as described in the resource link "Getting Started with JavaFX using Gradle".
+
+3. Update the App.java file for your existing application to add a feature that displays a line graph every time Yahoo Finance is queried. This line graph should have a time tick on the x-axis and the stock price on the y-axis. This plot should update each time your application queries a stock price. On refresh, it should display all the currently stored stock prices.
+
+4. Compile your application by running the command "gradle build".
+
+5. Run your application by running the command "gradle run".
+
+6. Test your application and debug as needed.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                                Answer: Visualize live data
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 package citi;
 
@@ -113,4 +126,5 @@ public class App extends Application {
         launch(args);
     }
 }
+
 
